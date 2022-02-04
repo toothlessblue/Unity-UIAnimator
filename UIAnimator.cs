@@ -15,12 +15,12 @@ public class UIAnimator : MonoBehaviour
 
     public void animate() {
         this.callback = null;
-        this.steps[0].animate();
+        this.steps[0].animate(this);
     }
 
     public void animate(OnFinish callback) {
         this.callback = callback;
-        this.steps[0].animate();
+        this.steps[0].animate(this);
     }
 
     public void onFinish() {

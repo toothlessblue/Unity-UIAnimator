@@ -23,7 +23,7 @@ public class AnimationStep
 
     public delegate void onComplete();
 
-    public UIAnimator animator;
+    private UIAnimator animator;
 
     public AnimatableFields animatingFields;
 
@@ -35,7 +35,8 @@ public class AnimationStep
     }
     public int index;
 
-    public void animate() {
+    public void animate(UIAnimator animator) {
+        this.animator = animator;
         if (this.next != null) this.startNext(When.WithLast);
         this.animator.StartCoroutine(this._animate());
     }
@@ -63,7 +64,7 @@ public class AnimationStep
             this.animator.StartCoroutine(this.delayStartNext());
 
         } else if (this.next.when == When.AfterLast && when == When.AfterLast) {
-            this.next.animate();
+            this.next.animate(this.animator);
         }
     }
 
@@ -72,7 +73,7 @@ public class AnimationStep
             yield return new WaitForSeconds(this.withLastDelay);
         }
 
-        this.next.animate();
+        this.next.animate(this.animator);
     }
 
     public enum When {

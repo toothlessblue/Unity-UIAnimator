@@ -23,7 +23,7 @@ public class AnimationStep
 
     public delegate void onComplete();
 
-    private UIAnimator animator;
+    [HideInInspector] public UIAnimator animator;
 
     public AnimatableFields animatingFields;
 

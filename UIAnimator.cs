@@ -11,7 +11,7 @@ public class UIAnimator : MonoBehaviour
     [HideInInspector] public List<bool> dropdowns;
     public List<AnimationStep> steps = new List<AnimationStep>();
 
-    [HideInInspector] public OnFinish callback;
+    private OnFinish callback;
 
     public void animate() {
         this.callback = null;
